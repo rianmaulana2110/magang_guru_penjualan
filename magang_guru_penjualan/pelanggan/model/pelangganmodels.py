@@ -1,6 +1,6 @@
 from datetime import datetime
 
-class pelanggan:
+class Pelanggan:
     def __init__(self, id, nama, alamat, telepon, created_at=None, update_at=None):
         self.id = id
         self.nama = nama
@@ -15,7 +15,7 @@ def from_dict(data):
     membuat objek produk dari kamus data.
     """
     
-    return pelanggan(
+    return Pelanggan(
         id=data['id'],
         nama=data['nama'],
         alamat=data['alamat'],
