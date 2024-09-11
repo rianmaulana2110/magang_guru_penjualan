@@ -10,10 +10,9 @@ class ProdukController:
 
     def get_all_produk(self):
         try:
-            cursor = self.db.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM produk")
-            results = cursor.fetchall()
-            cursor.close()
+            with self.db.cursor(dictionary=True) as cursor:
+                cursor.execute("SELECT * FROM produk")
+                results = cursor.fetchall()
 
             produk_list = []
             for row in results:
@@ -43,10 +42,9 @@ class ProdukController:
         
     def cari_produk(self, id):
         try:
-            cursor = self.db.cursor(dictionary=True)
-            cursor.execute("SELECT * FROM produk WHERE id = %s", (id,))
-            produk = cursor.fetchone()
-            cursor.close()
+            with self.db.cursor(dictionary=True) as cursor:
+                cursor.execute("SELECT * FROM produk WHERE id = %s", (id,))
+                produk = cursor.fetchone()
 
             if produk:
                 created_at = produk['created_at']
@@ -73,11 +71,10 @@ class ProdukController:
             created_at = datetime.now()
             updated_at = datetime.now()
 
-            cursor = self.db.cursor()
-            query = "INSERT INTO produk (nama, kategori, harga, stok, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s)"
-            cursor.execute(query, (nama, kategori, harga, stok, created_at, updated_at))
-            self.db.commit()
-            cursor.close()
+            with self.db.cursor() as cursor:
+                query = "INSERT INTO produk (nama, kategori, harga, stok, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s)"
+                cursor.execute(query, (nama, kategori, harga, stok, created_at, updated_at))
+                self.db.commit()
 
             return {'message': 'Data produk berhasil ditambahkan'}, 201
         except mysql.connector.Error as e:
@@ -89,20 +86,17 @@ class ProdukController:
             if not data:
                 return {'message': 'Data yang diterima kosong'}, 400
             
-            cursor = self.db.cursor(dictionary=True)
-            query = "SELECT * FROM produk WHERE id = %s"
-            cursor.execute(query, (id,))
-            produk = cursor.fetchone()
-            cursor.close()
+            with self.db.cursor(dictionary=True) as cursor:
+                cursor.execute("SELECT * FROM produk WHERE id = %s", (id,))
+                produk = cursor.fetchone()
 
             if not produk:
                 return {'message': 'Data produk tidak ditemukan'}, 404
             
-            cursor = self.db.cursor()
-            query = "UPDATE produk SET nama = %s, kategori = %s, harga = %s, stok = %s, updated_at = NOW() WHERE id = %s"
-            cursor.execute(query, (data['nama'], data['kategori'], data['harga'], data['stok'], id))
-            self.db.commit()
-            cursor.close()
+            with self.db.cursor() as cursor:
+                query = "UPDATE produk SET nama = %s, kategori = %s, harga = %s, stok = %s, updated_at = NOW() WHERE id = %s"
+                cursor.execute(query, (data['nama'], data['kategori'], data['harga'], data['stok'], id))
+                self.db.commit()
 
             return {'message': 'Data produk berhasil diperbarui'}, 200
         except mysql.connector.Error as e:
@@ -111,12 +105,10 @@ class ProdukController:
     
     def hapus_produk(self, id):
         try:
-            cursor = self.db.cursor()
-            query = "DELETE FROM produk WHERE id = %s"
-            cursor.execute(query, (id,))
-            self.db.commit()
-            affected_rows = cursor.rowcount
-            cursor.close()
+            with self.db.cursor() as cursor:
+                cursor.execute("DELETE FROM produk WHERE id = %s", (id,))
+                self.db.commit()
+                affected_rows = cursor.rowcount
 
             if affected_rows > 0:
                 return {'message': 'Data produk berhasil dihapus'}, 200

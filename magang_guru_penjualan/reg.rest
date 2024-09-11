@@ -1,0 +1,11 @@
+###pelanggan
+get http://127.0.0.1:5000/pelanggan
+
+
+
+###produk
+get http://127.0.0.1:5000/produk
+
+
+###transaksi
+get http://127.0.0.1:5000/transaksi
