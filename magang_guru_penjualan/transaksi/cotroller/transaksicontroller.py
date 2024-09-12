@@ -24,8 +24,8 @@ class TransaksiController:
                 if isinstance(updated_at, str):
                     updated_at = datetime.strptime(updated_at, '%Y-%m-%d %H:%M:%S')
 
-                produk = Transaksi(row['id'], row['pelanggan_id'], row['tanggal'], created_at, updated_at)
-                transaksi_list.append(produk)
+                transaksi = Transaksi(row['id'], row['pelanggan_id'], row['tanggal'], created_at, updated_at)
+                transaksi_list.append(transaksi)
 
             return transaksi_list
         except mysql.connector.Error as e:
