@@ -10,3 +10,8 @@ get http://127.0.0.1:5000/produk
 
 ###transaksi
 get http://127.0.0.1:5000/transaksi
+
+
+
+###detail transaksi
+get http://127.0.0.1:5000/detail_transaksi
