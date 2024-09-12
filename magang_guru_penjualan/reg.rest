@@ -3,6 +3,18 @@ get http://127.0.0.1:5000/pelanggan
 
 
 
+
+###pelanggan
+POST http://127.0.0.1:5000/pelanggan
+Content-Type: application/json
+
+{
+    "nama": "rian",
+    "alamat": "tiban diamon",
+    "telepon": "082375784728"
+}
+
+
 ###produk
 get http://127.0.0.1:5000/produk
 
@@ -11,7 +23,13 @@ get http://127.0.0.1:5000/produk
 ###transaksi
 get http://127.0.0.1:5000/transaksi
 
+###transaksi
+POST http://127.0.0.1:5000/transaksi
+Content-Type: application/json
 
+{
+    "nama"
+}
 
 ###detail transaksi
 get http://127.0.0.1:5000/detail_transaksi

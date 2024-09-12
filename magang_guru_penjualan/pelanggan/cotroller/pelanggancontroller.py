@@ -72,7 +72,7 @@ def cari_pelanggan(self, id):
 def tambah_pelanggan(self, data):
     try:
         nama = data.get('nama')
-        alamat = data.get('alamt')
+        alamat = data.get('alamat')
         telepon = data.get('telepon')
         created_at = datetime.now() # ambil waktu saat ini sebagai created_at
         updated_at = datetime.now() # ambil waktu saat ini sebagai updated_at
