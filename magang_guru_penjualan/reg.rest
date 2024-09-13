@@ -1,15 +1,25 @@
-###pelanggan
+###pelanggan panggil
 get http://127.0.0.1:5000/pelanggan
 
 
 
 
-###pelanggan
+###pelanggan insert
 POST http://127.0.0.1:5000/pelanggan
 Content-Type: application/json
 
 {
     "nama": "rian",
+    "alamat": "tiban diamon",
+    "telepon": "082375784728"
+}
+
+###pelanggan edit
+PUT http://127.0.0.1:5000/pelanggan/3
+Content-Type: application/json
+
+{
+    "nama": "rian maulana",
     "alamat": "tiban diamon",
     "telepon": "082375784728"
 }
