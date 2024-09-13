@@ -10,3 +10,4 @@ db_connector.test_connection()
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
