@@ -24,7 +24,7 @@ class Detail_transaksiController:
                 if isinstance(updated_at, str):
                     updated_at = datetime.strptime(updated_at, '%Y-%m-%d %H:%M:%S')
 
-                detail_transaksi = Detail_transaksi(row['id'], row['transaksi_id'], row['produk_id'], row['jumlah'], row['harga'], row['sub_total'], row['metode_pembayaran'], created_at, updated_at)
+                detail_transaksi = Detail_transaksi(row['id'], row['transaksi_id'], row['produk_id'], row['jumlah'], row['harga'], row['metode_pembayaran'], created_at, updated_at)
                 detail_transaksi_list.append(detail_transaksi)
 
             return detail_transaksi_list
@@ -68,14 +68,13 @@ class Detail_transaksiController:
             produk_id = data.get('produk_id')
             jumlah = data.get('jumlah')
             harga = data.get('harga')
-            sub_total = data.get('pelanggan_id')
             metode_pembayaran = data.get('metode_pembayaran')
             created_at = datetime.now()
             updated_at = datetime.now()
 
             with self.db.cursor() as cursor:
-                query = "INSERT INTO detail_transaksi (transaksi_id, produk_id, jumlah, harga, sub_total, metode_pembayaran, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s)"
-                cursor.execute(query, (transaksi_id, produk_id, jumlah, harga, sub_total, metode_pembayaran, created_at, updated_at))
+                query = "INSERT INTO detail_transaksi (transaksi_id, produk_id, jumlah, harga, metode_pembayaran, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+                cursor.execute(query, (transaksi_id, produk_id, jumlah, harga, metode_pembayaran, created_at, updated_at))
                 self.db.commit()
 
             return {'message': 'Data detail transaksi berhasil ditambahkan'}, 201
@@ -96,8 +95,8 @@ class Detail_transaksiController:
                 return {'message': 'Data detail transaksi tidak ditemukan'}, 404
             
             with self.db.cursor() as cursor:
-                query = "UPDATE detail_transaksi SET transaksi_id = %s, produk_id = %s, jumlah = %s, harga = %s, sub_total = %s, metode_pembayaran = %s, updated_at = NOW() WHERE id = %s"
-                cursor.execute(query, (data['transaksi_id'], data['produk_id'], data['jumlah'], data['harga'], data['sub_total'], data['metode_pembayaran'], id))
+                query = "UPDATE detail_transaksi SET transaksi_id = %s, produk_id = %s, jumlah = %s, harga = %s, metode_pembayaran = %s, updated_at = NOW() WHERE id = %s"
+                cursor.execute(query, (data['transaksi_id'], data['produk_id'], data['jumlah'], data['harga'], data['metode_pembayaran'], id))
                 self.db.commit()
 
             return {'message': 'Data detail transaksi berhasil diperbarui'}, 200

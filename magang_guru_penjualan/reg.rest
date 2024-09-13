@@ -19,17 +19,56 @@ Content-Type: application/json
 get http://127.0.0.1:5000/produk
 
 
+###produk
+get http://127.0.0.1:5000/produk/4
+
+
+###produk
+POST http://127.0.0.1:5000/produk
+Content-Type: application/json
+
+{
+    "nama": "rolex",
+    "kategori": "jam",
+    "harga": "25000000",
+    "stok": "20"
+}
+
+
 
 ###transaksi
 get http://127.0.0.1:5000/transaksi
+
+###transaksi
+get http://127.0.0.1:5000/transaksi/1
 
 ###transaksi
 POST http://127.0.0.1:5000/transaksi
 Content-Type: application/json
 
 {
-    "nama"
+    "pelanggan_id": "2",
+    "tanggal": "2024-09-13"
 }
 
 ###detail transaksi
 get http://127.0.0.1:5000/detail_transaksi
+
+
+###detail transaksi
+get http://127.0.0.1:5000/detail_transaksi/3
+
+
+
+###detail transaksi
+POST http://127.0.0.1:5000/detail_transaksi
+Content-Type: application/json
+
+{
+    "transaksi_id": "1",
+    "produk_id": "1",
+    "jumlah": "2",
+    "harga": "4000",
+    "metode_pembayaran": "cas"
+    
+}

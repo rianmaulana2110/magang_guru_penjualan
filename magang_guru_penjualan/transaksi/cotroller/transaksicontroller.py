@@ -70,7 +70,7 @@ class TransaksiController:
             updated_at = datetime.now()
 
             with self.db.cursor() as cursor:
-                query = "INSERT INTO transaksi (pelanggan_id, tanggal, created_at, updated_at) VALUES (%s, %s, %s, %s, %s, %s)"
+                query = "INSERT INTO transaksi (pelanggan_id, tanggal, created_at, updated_at) VALUES (%s, %s, %s, %s)"
                 cursor.execute(query, (pelanggan_id, tanggal, created_at, updated_at))
                 self.db.commit()
 
