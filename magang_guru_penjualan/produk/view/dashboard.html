@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Dashboard</title>
+    <script src="https://cdn.tailwindcss.com/"></script> <!-- Correct src attribute -->
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-2">
+        <h1 class="text-3xl font-bold mb-8">Product Dashboard</h1>
+        <table id="produkTable" class="w-full border-collapse border border-gray-950">
+            <!-- Isi table -->
+        </table>
+    </div>
+    <div class="container mx-auto py-1">
+        <table class="w-full border-collapse border border-gray-950">
+            <thead>
+                <tr class="bg-red-700">
+                    <th class="p-3 text-left">ID</th>
+                    <th class="p-3 text-left">Nama</th>
+                    <th class="p-3 text-left">Kategori</th>
+                    <th class="p-3 text-left">Harga</th>
+                    <th class="p-3 text-left">Stok</th>
+                    <th class="p-3 text-left">Created At</th>
+                    <th class="p-3 text-left">Updated At</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for produk in produk_data %}
+                <tr class="border-b border-gray-200">
+                    <td class="p-3">{{produk.id}}</td>
+                    <td class="p-3">{{produk.nama}}</td>
+                    <td class="p-3">{{produk.kategori}}</td>
+                    <td class="p-3">{{produk.harga}}</td>
+                    <td class="p-3">{{produk.stok}}</td>
+                    <td class="p-3">{{produk.created_at}}</td>
+                    <td class="p-3">{{produk.updated_at}}</td> <!-- Corrected typo -->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // fungsi untuk menampilkan data produk dalam tabel
+        function tampilkanDataProduk(produk) {
+            var tableBody = document.getElementById("produkTable").getElementsByTagName('tbody')[0];
+            tableBody.innerHTML = ""; // bersihkan isi tabel sebelum menambahkan data
+
+            var row = tableBody.insertRow();
+            row.innerHTML = `<td>${produk.id}</td> 
+                            <td>${produk.nama}</td> 
+                            <td>${produk.kategori}</td> 
+                            <td>${produk.harga}</td> 
+                            <td>${produk.stok}</td>
+                            <td>${produk.created_at}</td>
+                            <td>${produk.updated_at}</td>`; // Corrected 'updated_at'
+        }
+    </script>
+</body>
+</html>

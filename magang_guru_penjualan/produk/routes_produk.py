@@ -1,5 +1,6 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from produk.cotroller.produkcontroller import ProdukController
+
 
 produk_router = Blueprint('produk_router', __name__)
 produk_controller = ProdukController()
@@ -8,6 +9,12 @@ produk_controller = ProdukController()
 @produk_router.route('/produk', methods=['GET'])
 def lihat_produk():
     return jsonify(produk_controller.lihat_produk())
+
+# rute tampil ke html dashboard
+@produk_router.route('/produk/dashboard', methods=['GET'])
+def produk_dashboard():
+    produk_data = produk_controller.get_produk_for_dashboard()
+    return render_template('dashboard.html' , produk_data=produk_data)
 
 # rute  mencari data dalam tabel
 @produk_router.route('/produk/<int:id>', methods=['GET'])

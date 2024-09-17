@@ -117,3 +117,11 @@ class ProdukController:
         except mysql.connector.Error as e:
             print(f"Error: {e}")
             return {'message': 'Terjadi kesalahan saat menghapus data produk'}, 500
+        
+    # melihat dengan HTML
+    def get_produk_for_dashboard(self):
+        all_produk = self.get_all_produk()
+        if all_produk is not None:
+            return all_produk
+        else:
+            return []
