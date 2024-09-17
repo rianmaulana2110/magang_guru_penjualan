@@ -14,7 +14,7 @@ def lihat_produk():
 @produk_router.route('/produk/dashboard', methods=['GET'])
 def produk_dashboard():
     produk_data = produk_controller.get_produk_for_dashboard()
-    return render_template('dashboard.html' , produk_data=produk_data)
+    return render_template('dashboard.html', produk_data=produk_data)
 
 # rute  mencari data dalam tabel
 @produk_router.route('/produk/<int:id>', methods=['GET'])
