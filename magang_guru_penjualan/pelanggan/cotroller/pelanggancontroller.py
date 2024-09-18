@@ -131,3 +131,11 @@ class PelangganController:
         except mysql.connector.Error as e:
             print(f"Error: {e}")
             return {'message': 'Terjadi kesalahan saat menghapus data pelanggan'}, 500
+        
+    # melihat dengan HTML
+    def get_pelanggan_for_dashboard(self):
+        all_pelanggan = self.get_all_pelanggan()
+        if all_pelanggan is not None:
+            return all_pelanggan
+        else:
+            return []

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, render_template
 from pelanggan.cotroller.pelanggancontroller import PelangganController
 
 pelanggan_router = Blueprint('pelanggan_router', __name__)
@@ -8,6 +8,12 @@ pelanggan_controller = PelangganController()
 @pelanggan_router.route('/pelanggan', methods=['GET'])
 def lihat_pelanggan():
     return jsonify(pelanggan_controller.lihat_pelanggan())
+
+# rute tampil ke html dashboard
+@pelanggan_router.route('/pelanggan/dashboard', methods=['GET'])
+def pelanggan_dashboard():
+    pelanggan_data = pelanggan_controller.get_pelanggan_for_dashboard()
+    return render_template('dashboard.html', pelanggan_data=pelanggan_data)
 
 # rute  mencari data dalam tabel
 @pelanggan_router.route('/pelanggan/<int:id>', methods=['GET'])
