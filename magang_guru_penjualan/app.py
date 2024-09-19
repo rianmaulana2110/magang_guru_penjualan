@@ -7,7 +7,8 @@ from detail_transaksi.routes_detail_transaksi import detail_transaksi_router
 
 
 # Inisialisasi aplikasi Flask
-app = Flask(__name__)
+app = Flask(__name__, template_folder="view")
+
 
 # Membuat instance dari DatabaseConnector dan menguji koneksi
 db_connector = DatabaseConnector()
