@@ -9,9 +9,9 @@ POST http://127.0.0.1:5000/pelanggan
 Content-Type: application/json
 
 {
-    "nama": "rian",
-    "alamat": "tiban diamon",
-    "telepon": "082375784728"
+    "nama": "andi saputra",
+    "alamat": "tj riau",
+    "telepon": "08230878778"
 }
 
 ###pelanggan edit
@@ -38,10 +38,10 @@ POST http://127.0.0.1:5000/produk
 Content-Type: application/json
 
 {
-    "nama": "rolex",
-    "kategori": "jam",
-    "harga": "25000000",
-    "stok": "20"
+    "nama": "buku tulis",
+    "kategori": "buku",
+    "harga": "1500",
+    "stok": "30"
 }
 
 
@@ -57,7 +57,7 @@ POST http://127.0.0.1:5000/transaksi
 Content-Type: application/json
 
 {
-    "pelanggan_id": "2",
+    "pelanggan_id": "3",
     "tanggal": "2024-09-13"
 }
 
@@ -75,10 +75,10 @@ POST http://127.0.0.1:5000/detail_transaksi
 Content-Type: application/json
 
 {
-    "transaksi_id": "1",
-    "produk_id": "1",
-    "jumlah": "2",
-    "harga": "4000",
+    "transaksi_id": "2",
+    "produk_id": "3",
+    "jumlah": "5",
+    "harga": "25000",
     "metode_pembayaran": "cas"
     
 }
