@@ -4,10 +4,13 @@ from pelanggan.routes_pelanggan import pelanggan_router
 from produk.routes_produk import produk_router
 from transaksi.routes_transaksi import transaksi_router
 from detail_transaksi.routes_detail_transaksi import detail_transaksi_router
+from jinja2 import ChoiceLoader, FileSystemLoader
 
-
-# Inisialisasi aplikasi Flask
-app = Flask(__name__, template_folder="produk/view")
+app = Flask(__name__)
+app.jinja_loader = ChoiceLoader([
+    FileSystemLoader('pelanggan/view'),
+    FileSystemLoader('produk/view')
+])
 
 
 # Membuat instance dari DatabaseConnector dan menguji koneksi

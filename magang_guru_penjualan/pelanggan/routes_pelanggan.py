@@ -13,7 +13,7 @@ def lihat_pelanggan():
 @pelanggan_router.route('/pelanggan/dashboard', methods=['GET'])
 def pelanggan_dashboard():
     pelanggan_data = pelanggan_controller.get_pelanggan_for_dashboard()
-    return render_template('dashboard.html', pelanggan_data=pelanggan_data)
+    return render_template('pelanggan_dashboard.html', pelanggan_data=pelanggan_data)
 
 # rute  mencari data dalam tabel
 @pelanggan_router.route('/pelanggan/<int:id>', methods=['GET'])
